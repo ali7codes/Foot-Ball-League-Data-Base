@@ -1,0 +1,637 @@
+create database project_footballxleague;
+
+
+CREATE TABLE Teams (
+  team_id INT PRIMARY KEY,
+  team_name VARCHAR(50) NOT NULL,
+  city VARCHAR(50) NOT NULL,
+  player_id INT,
+  manager_id INT
+);
+
+INSERT INTO Teams (team_id, team_name, city, player_id, manager_id)
+VALUES
+(1, 'Manchester United', 'Manchester', 1, 1),
+(2, 'Real Madrid', 'Madrid', 2, 2),
+(3, 'FC Barcelona', 'Barcelona', 3, 3),
+(4, 'Bayern Munich', 'Munich', 4, 4),
+(5, 'Juventus', 'Turin', 5, 5),
+(6, 'Liverpool', 'Liverpool', 6, 6),
+(7, 'Paris Saint-Germain', 'Paris', 7, 7),
+(8, 'Chelsea', 'London', 8, 8),
+(9, 'Manchester City', 'Manchester', 9, 9),
+(10, 'AC Milan', 'Milan', 10, 10),
+(11, 'Arsenal', 'London', 11, 11),
+(12, 'Tottenham Hotspur', 'London', 12, 12),
+(13, 'Borussia Dortmund', 'Dortmund', 13, 13),
+(14, 'Inter Milan', 'Milan', 14, 14),
+(15, 'Atletico Madrid', 'Madrid', 15, 15),
+(16, 'Ajax', 'Amsterdam', 16, 16),
+(17, 'Sevilla', 'Seville', 17, 17),
+(18, 'Napoli', 'Naples', 18, 18),
+(19, 'AS Roma', 'Rome', 19, 19),
+(20, 'Benfica', 'Lisbon', 20, 20);
+
+
+CREATE TABLE Players (
+  player_id INT PRIMARY KEY,
+  first_name VARCHAR(50) NOT NULL,
+  last_name VARCHAR(50) NOT NULL,
+  phone_number VARCHAR(20) NOT NULL,
+  birthdate DATE NOT NULL,
+  kit_number INT,
+  physical_characteristics VARCHAR(255),
+  country VARCHAR(50),
+  position VARCHAR(50),
+  team_id INT
+);
+
+INSERT INTO Players (player_id, first_name, last_name, phone_number, birthdate, kit_number, physical_characteristics, country, team_id) VALUES
+(1, 'Lionel', 'Messi', '1234567890', '1987-06-24', 10, 'Agile and skillful', 'Argentina', 1),
+(2, 'Cristiano', 'Ronaldo', '9876543210', '1985-02-05', 7, 'Powerful and fast', 'Portugal', 1),
+(3, 'Neymar', 'Jr', '5551112222', '1992-02-05', 10, 'Creative and agile', 'Brazil', 1),
+(4, 'Kylian', 'Mbappe', '5552223333', '1998-12-20', 7, 'Pacey and clinical', 'France', 1),
+(5, 'Robert', 'Lewandowski', '5553334444', '1988-08-21', 9, 'Strong and lethal', 'Poland', 1),
+(6, 'Thomas', 'Mueller', '5554445555', '1989-09-13', 25, 'Intelligent and versatile', 'Germany', 1),
+(7, 'Kevin', 'De Bruyne', '5555556666', '1991-06-28', 17, 'Visionary and precise passer', 'Belgium',1),
+(8, 'Riyad', 'Mahrez', '5556667777', '1991-02-21', 26, 'Tricky dribbler and accurate shooter', 'Algeria', 1),
+(9, 'Harry', 'Kane', '5557778888', '1993-07-28', 10, 'Clinical finisher and excellent passer', 'England', 1),
+(10, 'Son', 'Heung-min', '5558889999', '1992-07-08', 7, 'Versatile and explosive speed', 'South Korea', 1),
+(11, 'Sergio', 'Aguero', '5559990000', '1988-06-02', 10, 'Deadly striker and great positioning', 'Argentina', 1),
+(12, 'Raheem', 'Sterling', '5550001111', '1994-12-08', 7, 'Pacey and skillful', 'England', 2),
+(13, 'Luis', 'Suarez', '5551112222', '1987-01-24', 9, 'Aggressive and clinical', 'Uruguay', 2),
+(14, 'Antoine', 'Griezmann', '5552223333', '1991-03-21', 7, 'Technical and intelligent', 'France', 2),
+(15, 'Eden', 'Hazard', '5553334444', '1991-01-07', 10, 'Elegant and creative', 'Belgium', 2),
+(16, 'Karim', 'Benzema', '5554445555', '1987-12-19', 9, 'Smooth and clinical finisher', 'France', 2),
+(17, 'Mohamed', 'Salah', '5555556666', '1992-06-15', 11, 'Pacey and deadly left foot', 'Egypt', 2),
+(18, 'Sadio', 'Mane', '5556667777', '1992-04-10', 10, 'Explosive speed and excellent dribbling', 'Senegal',2),
+(19, 'Andres', 'Iniesta', '5557778888', '1984-05-11', 8, 'Magical dribbling and vision', 'Spain', 2),
+(20, 'Sergio', 'Busquets', '5558889999', '1988-07-16', 5, 'Tactical and precise passer', 'Spain', 2),
+(21, 'Edinson', 'Cavani', '5559990000', '1987-02-14', 21, 'Clinical finisher and hardworking', 'Uruguay', 2),
+(22, 'Paul', 'Pogba', '5550001111', '1993-03-15', 6, 'Strong and excellent passer', 'France', 2),
+(23, 'Gonzalo', 'Higuain', '5551112222', '1987-12-10', 9, 'Powerful and lethal', 'Argentina', 3),
+(24, 'Piotr', 'Zielinski', '5552223333', '1994-05-20', 20, 'Energetic and versatile', 'Poland', 3),
+(25, 'Thiago', 'Alcantara', '5553334444', '1991-04-11', 6, 'Elegant and precise passer', 'Spain', 3),
+(26, 'Kingsley', 'Coman', '5554445555', '1996-06-13', 29, 'Pacey and skilful winger', 'France', 3),
+(27, 'Giovanni', 'Reyna', '5555556666', '2002-11-13', 32, 'Young and promising talent', 'United States', 3),
+(28, 'Erling', 'Haaland', '5556667777', '2000-07-21', 9, 'Powerful and clinical finisher', 'Norway', 3),
+(29, 'Timo', 'Werner', '5557778888', '1996-03-06', 11, 'Pacey and agile', 'Germany', 3),
+(30, 'Kai', 'Havertz', '5558889999', '1999-06-11', 29, 'Technically gifted and versatile', 'Germany', 3),
+(31, 'Wissam', 'Ben Yedder', '5559990000', '1990-08-12', 9, 'Clever and clinical', 'France', 3),
+(32, 'Lucas', 'Ocampos', '5550001111', '1994-07-11', 5, 'Energetic and versatile', 'Argentina', 3),
+(33, 'Luka', 'Modric', '5551112222', '1985-09-09', 10, 'Skilful and intelligent playmaker', 'Croatia', 3),
+(34, 'Gareth', 'Bale', '5552223333', '1989-07-16', 11, 'Pacey and powerful left foot', 'Wales', 4),
+(35, 'Luis', 'Figo', '5553334444', '1972-11-04', 7, 'Elegant and precise winger', 'Portugal', 4),
+(36, 'Zinedine', 'Zidane', '5554445555', '1972-06-23', 10, 'Graceful and skillful playmaker', 'France', 4),
+(37, 'Alexis', 'Sanchez', '5555556666', '1988-12-19', 7, 'Energetic and versatile', 'Chile', 4),
+(38, 'Arturo', 'Vidal', '5556667777', '1987-05-22', 8, 'Tough-tackling and energetic', 'Chile', 4),
+(39, 'David', 'Silva', '5557778888', '1986-01-08', 21, 'Silky dribbler and precise passer', 'Spain', 4),
+(40, 'Sergio', 'Ramos', '5558889999', '1986-03-30', 4, 'Strong and aggressive defender', 'Spain', 4),
+(41, 'Pierre-Emerick', 'Aubameyang', '5559990000', '1989-06-18', 14, 'Pacey and clinical finisher', 'Gabon', 4),
+(42, 'Bukayo', 'Saka', '5550001111', '2001-09-05', 7, 'Versatile and skillful', 'England', 4),
+(43, 'Ciro', 'Immobile', '5551112222', '1990-02-20', 17, 'Sharp and lethal finisher', 'Italy', 4),
+(44, 'Lorenzo', 'Insigne', '5552223333', '1991-06-04', 24, 'Creative and agile winger', 'Italy', 4),
+(45, 'Romelu', 'Lukaku', '5553334444', '1993-05-13', 9, 'Powerful and clinical', 'Belgium', 5),
+(46, 'Nicolo', 'Barella', '5554445555', '1997-02-27', 23, 'Energetic and creative midfielder', 'Italy', 5),
+(47, 'Memphis', 'Depay', '5555556666', '1994-02-13', 10, 'Skilful and versatile attacker', 'Netherlands', 5),
+(48, 'Frenkie', 'de Jong', '5556667777', '1997-05-12', 21, 'Technically gifted and intelligent', 'Netherlands', 5),
+(49, 'Hakim', 'Ziyech', '5557778888', '1993-03-19', 22, 'Creative and precise passer', 'Morocco', 5),
+(50, 'NGolo', 'Kante', '5558889999', '1991-03-29', 7, 'Energetic and tenacious midfielder', 'France', 5),
+(51, 'Andriy', 'Shevchenko', '5559990000', '1976-09-29', 7, 'Clinical and intelligent striker', 'Ukraine', 5),
+(52, 'Andrea', 'Pirlo', '5550001111', '1979-05-19', 21, 'Elegant and visionary playmaker', 'Italy', 5),
+(53, 'Sergio', 'Ramos', '5551112222', '1986-03-30', 4, 'Strong and aggressive defender', 'Spain', 5),
+(54, 'Vinicius', 'Junior', '5552223333', '2000-07-12', 20, 'Pacey and skillful winger', 'Brazil', 5),
+(55, 'Youssef', 'En-Nesyri', '5553334444', '1997-06-01', 15, 'Tall and clinical finisher', 'Morocco', 5),
+(56, 'Munir', 'El Haddadi', '5554445555', '1995-09-01', 11, 'Skilful and versatile attacker', 'Spain', 6),
+(57, 'Gianluigi', 'Donnarumma', '5555556666', '1999-02-25', 99, 'Talented and confident goalkeeper', 'Italy', 6),
+(58, 'Zlatan', 'Ibrahimovic', '5556667777', '1981-10-03', 9, 'Strong and charismatic striker', 'Sweden', 6),
+(59, 'Marc-Andre', 'ter Stegen', '5557778888', '1992-04-30', 1, 'Agile and excellent shot-stopper', 'Germany', 6),
+(60, 'Gerard', 'Pique', '5558889999', '1987-02-02', 3, 'Tall and commanding center-back', 'Spain', 6),
+(61, 'Sadio', 'Mane', '5559990000', '1992-04-10', 10, 'Explosive speed and excellent dribbling', 'Senegal', 6),
+(62, 'Virgil', 'van Dijk', '5550001111', '1991-07-08', 4, 'Strong and commanding center-back', 'Netherlands', 6),
+(63, 'Cesar', 'Azpilicueta', '5551112222', '1989-08-28', 28, 'Versatile and reliable defender', 'Spain', 6),
+(64, 'Nolo', 'Kante', '5552223333', '1991-03-29', 7, 'Energetic and tenacious midfielder', 'France', 6),
+(65, 'Bruno', 'Fernandes', '5553334444', '1994-09-08', 18, 'Creative and lethal playmaker', 'Portugal', 6),
+(66, 'Marcus', 'Rashford', '5554445555', '1997-10-31', 10, 'Pacey and skillful winger', 'England', 6),
+(67, 'Pierre-Emerick', 'Aubameyang', '5555556666', '1989-06-18', 14, 'Pacey and clinical finisher', 'Gabon', 7),
+(68, 'Bukayo', 'Saka', '5556667777', '2001-09-05', 7, 'Versatile and skillful', 'England', 7),
+(69, 'Ciro', 'Immobile', '5557778888', '1990-02-20', 17, 'Sharp and lethal finisher', 'Italy', 7),
+(70, 'Lorenzo', 'Insigne', '5558889999', '1991-06-04', 24, 'Creative and agile winger', 'Italy', 7),
+(71, 'Robert', 'Lewandowski', '5559990000', '1988-08-21', 9, 'Strong and lethal', 'Poland', 7),
+(72, 'Thomas', 'Mueller', '5550001111', '1989-09-13', 25, 'Intelligent and versatile', 'Germany', 7),
+(73, 'Lionel', 'Messi', '5551112222', '1987-06-24', 10, 'Agile and skillful', 'Argentina', 7),
+(74, 'Cristiano', 'Ronaldo', '5552223333', '1985-02-05', 7, 'Powerful and fast', 'Portugal', 7),
+(75, 'Neymar', 'Jr', '5553334444', '1992-02-05', 10, 'Creative and agile', 'Brazil', 7),
+(76, 'Kylian', 'Mbappe', '5554445555', '1998-12-20', 7, 'Pacey and clinical', 'France', 7),
+(77, 'Kevin', 'De Bruyne', '5555556666', '1991-06-28', 17, 'Visionary and precise passer', 'Belgium', 7),
+(78, 'Riyad', 'Mahrez', '5556667777', '1991-02-21', 26, 'Tricky dribbler and accurate shooter', 'Algeria', 8),
+(79, 'Harry', 'Kane', '5557778888', '1993-07-28', 10, 'Clinical finisher and excellent passer', 'England', 8),
+(80, 'Son', 'Heung-min', '5558889999', '1992-07-08', 7, 'Versatile and explosive speed', 'South Korea', 8),
+(81, 'Sergio', 'Aguero', '5559990000', '1988-06-02', 10, 'Deadly striker and great positioning', 'Argentina', 8),
+(82, 'Raheem', 'Sterling', '5550001111', '1994-12-08', 7, 'Pacey and skillful', 'England', 8),
+(83, 'Luis', 'Suarez', '5551112222', '1987-01-24', 9, 'Aggressive and clinical', 'Uruguay', 8),
+(84, 'Antoine', 'Griezmann', '5552223333', '1991-03-21', 7, 'Technical and intelligent', 'France', 8),
+(85, 'Eden', 'Hazard', '5553334444', '1991-01-07', 10, 'Elegant and creative', 'Belgium', 8),
+(86, 'Karim', 'Benzema', '5554445555', '1987-12-19', 9, 'Smooth and clinical finisher', 'France', 8),
+(87, 'Mohamed', 'Salah', '5555556666', '1992-06-15', 11, 'Pacey and deadly left foot', 'Egypt', 8),
+(88, 'Sadio', 'Mane', '5556667777', '1992-04-10', 10, 'Explosive speed and excellent dribbling', 'Senegal', 8),
+(89, 'Andres', 'Iniesta', '5557778888', '1984-05-11', 8, 'Magical dribbling and vision', 'Spain', 9),
+(90, 'Sergio', 'Busquets', '5558889999', '1988-07-16', 5, 'Tactical and precise passer', 'Spain', 9),
+(91, 'Edinson', 'Cavani', '5559990000', '1987-02-14', 21, 'Clinical finisher and hardworking', 'Uruguay', 9),
+(92, 'Paul', 'Pogba', '5550001111', '1993-03-15', 6, 'Strong and excellent passer', 'France', 9),
+(93, 'Gonzalo', 'Higuain', '5551112222', '1987-12-10', 9, 'Powerful and lethal', 'Argentina', 9),
+(94, 'Piotr', 'Zielinski', '5552223333', '1994-05-20', 20, 'Energetic and versatile', 'Poland', 9),
+(95, 'Thiago', 'Alcantara', '5553334444', '1991-04-11', 6, 'Elegant and precise passer', 'Spain', 9),
+(96, 'Kingsley', 'Coman', '5554445555', '1996-06-13', 29, 'Pacey and skilful winger', 'France', 9),
+(97, 'Giovanni', 'Reyna', '5555556666', '2002-11-13', 32, 'Young and promising talent', 'United States', 9),
+(98, 'Erling', 'Haaland', '5556667777', '2000-07-21', 9, 'Powerful and clinical finisher', 'Norway', 9),
+(99, 'Timo', 'Werner', '5557778888', '1996-03-06', 11, 'Pacey and agile', 'Germany', 9),
+(100, 'Kai', 'Havertz', '5558889999', '1999-06-11', 29, 'Technically gifted and versatile', 'Germany', 10),
+(101, 'Gareth', 'Southgate', '5554445555', '1971-09-03', 2, 'Strong and disciplined defender', 'England', 10),
+(102, 'Kevin', 'Trapp', '5555556666', '1990-07-08', 1, 'Agile and reliable goalkeeper', 'Germany', 10),
+(103, 'Joshua', 'Kimmich', '5556667777', '1995-02-08', 6, 'Energetic and versatile', 'Germany', 10),
+(104, 'Alphonso', 'Davies', '5557778888', '2000-11-02', 19, 'Pacey and skillful winger', 'Canada', 10),
+(105, 'Thierry', 'Henry', '5558889999', '1977-08-17', 14, 'Clinical and agile forward', 'France', 10),
+(106, 'Peter', 'Crouch', '5559990000', '1981-01-30', 15, 'Tall and aerially dominant striker', 'England', 10),
+(107, 'Andrey', 'Arshavin', '5550001111', '1981-05-29', 23, 'Skillful and intelligent playmaker', 'Russia', 10),
+(108, 'Michael', 'Owen', '5551112222', '1979-12-14', 10, 'Pacey and lethal finisher', 'England', 10),
+(109, 'Andreas', 'Christensen', '5552223333', '1996-04-10', 4, 'Elegant and composed defender', 'Denmark', 10),
+(110, 'Jadon', 'Sancho', '5553334444', '2000-03-25', 7, 'Skilful and exciting winger', 'England', 10),
+(111, 'Trent', 'Alexander-Arnold', '5554445555', '1998-10-07', 66, 'Attacking full-back with great crossing ability', 'England', 11),
+(112, 'Eder', 'Militao', '5555556666', '1998-01-18', 3, 'Strong and athletic defender', 'Brazil', 11),
+(113, 'Luka', 'Jovic', '5556667777', '1997-12-23', 18, 'Clinical and opportunistic striker', 'Serbia', 11),
+(114, 'Raphael', 'Varane', '5557778888', '1993-04-25', 5, 'Tall and composed center-back', 'France', 11),
+(115, 'Joachim', 'Low', '5558889999', '1960-02-03', 1, 'Experienced and tactical manager', 'Germany', 11),
+(116, 'Jordan', 'Pickford', '5559990000', '1994-03-07', 1, 'Agile and commanding goalkeeper', 'England', 11),
+(117, 'Jamie', 'Vardy', '5550001111', '1987-01-11', 9, 'Pacey and clinical striker', 'England', 11),
+(118, 'Kyle', 'Walker', '5551112222', '1990-05-28', 2, 'Fast and versatile defender', 'England', 11),
+(119, 'Marcus', 'Rashford', '5552223333', '1997-10-31', 10, 'Explosive and skillful forward', 'England', 11),
+(120, 'Frenkie', 'de Jong', '5553334444', '1997-05-12', 21, 'Technically gifted and intelligent midfielder', 'Netherlands', 11),
+(121, 'Virgil', 'van Dijk', '5554445555', '1991-07-08', 4, 'Dominant and composed center-back', 'Netherlands', 11),
+(122, 'Paul', 'Pogba', '5555556666', '1993-03-15', 6, 'Powerful and creative midfielder', 'France', 12),
+(123, 'Kasper', 'Schmeichel', '5556667777', '1986-11-05', 1, 'Commanding and agile goalkeeper', 'Denmark', 12),
+(124, 'Bruno', 'Fernandes', '5557778888', '1994-09-08', 18, 'Technically gifted and influential midfielder', 'Portugal', 12),
+(125, 'Erling', 'Haaland', '5558889999', '2000-07-21', 9, 'Powerful and clinical striker', 'Norway', 12),
+(126, 'Timo', 'Werner', '5559990000', '1996-03-06', 11, 'Pacey and versatile forward', 'Germany', 12),
+(127, 'Hugo', 'Lloris', '5550001111', '1986-12-26', 1, 'Agile and reliable goalkeeper', 'France', 12),
+(128, 'Christian', 'Eriksen', '5551112222', '1992-02-14', 24, 'Creative and intelligent playmaker', 'Denmark', 12),
+(129, 'Aymeric', 'Laporte', '5552223333', '1994-05-27', 14, 'Solid and ball-playing defender', 'France', 12),
+(130, 'Wojciech', 'Szczesny', '5553334444', '1990-04-18', 1, 'Confident and agile goalkeeper', 'Poland', 12),
+(131, 'Hakan', 'Calhanoglu', '5554445555', '1994-02-08', 10, 'Creative and set-piece specialist', 'Turkey', 12),
+(132, 'Alex', 'Sandro', '5555556666', '1991-01-26', 12, 'Athletic and attacking full-back', 'Brazil', 12),
+(133, 'Memphis', 'Depay', '5556667777', '1994-02-13', 10, 'Versatile and skillful forward', 'Netherlands', 13),
+(134, 'Lionel', 'Messi', '5557778888', '1987-06-24', 10, 'Genius and record-breaking forward', 'Argentina', 13),
+(135, 'Gerard', 'Pique', '5558889999', '1987-02-02', 3, 'Intelligent and commanding center-back', 'Spain', 13),
+(136, 'Sergio', 'Ramos', '5559990000', '1986-03-30', 4, 'Fearless and passionate defender', 'Spain', 13),
+(137, 'Andrea', 'Pirlo', '5550001111', '1979-05-19', 21, 'Elegant and visionary midfielder', 'Italy', 13),
+(138, 'Karim', 'Benzema', '5551112222', '1987-12-19', 9, 'Talented and clinical striker', 'France', 13),
+(139, 'Thomas', 'Muller', '5552223333', '1989-09-13', 25, 'Intelligent and versatile forward', 'Germany', 13),
+(140, 'NGolo', 'Kante', '5553334444', '1991-03-29', 7, 'Energetic and tireless midfielder', 'France', 13),
+(141, 'Kalidou', 'Koulibaly', '5554445555', '1991-06-20', 26, 'Powerful and dominant center-back', 'Senegal', 13),
+(142, 'Raheem', 'Sterling', '5555556666', '1994-12-08', 7, 'Pacey and skillful winger', 'England', 13),
+(143, 'Jude', 'Bellingham', '5556667777', '2003-06-29', 22, 'Talented and composed midfielder', 'England', 13),
+(144, 'Harry', 'Maguire', '5557778888', '1993-03-05', 5, 'Strong and commanding center-back', 'England', 14),
+(145, 'Georginio', 'Wijnaldum', '5558889999', '1990-11-11', 5, 'Dynamic and goal-scoring midfielder', 'Netherlands', 14),
+(146, 'Romelu', 'Lukaku', '5559990000', '1993-05-13', 9, 'Powerful and clinical striker', 'Belgium', 14),
+(147, 'Thibaut', 'Courtois', '5550001111', '1992-05-11', 13, 'Tall and agile goalkeeper', 'Belgium', 14),
+(148, 'Diego', 'Godin', '5551112222', '1986-02-16', 2, 'Experienced and commanding defender', 'Uruguay', 14),
+(149, 'James', 'Rodriguez', '5552223333', '1991-07-12', 10, 'Creative and skillful playmaker', 'Colombia', 14),
+(150, 'Luis', 'Suarez', '5553334444', '1987-01-24', 9, 'Cunning and lethal striker', 'Uruguay', 14),
+(151, 'Marcelo', 'Brozovic', '5554445555', '1992-11-16', 77, 'Dynamic and versatile midfielder', 'Croatia', 14),
+(152, 'Alex', 'Telles', '5555556666', '1992-12-15', 27, 'Attacking and energetic full-back', 'Brazil', 14),
+(153, 'Kai', 'Havertz', '5556667777', '1999-06-11', 29, 'Technically gifted and versatile forward', 'Germany', 14),
+(154, 'Federico', 'Chiesa', '5557778888', '1997-10-25', 14, 'Skilful and direct winger', 'Italy', 14),
+(155, 'Keylor', 'Navas', '5558889999', '1986-12-15', 1, 'Agile and experienced goalkeeper', 'Costa Rica', 15),
+(156, 'Gianluigi', 'Donnarumma', '5559990000', '1999-02-25', 99, 'Talented and commanding goalkeeper', 'Italy', 15),
+(157, 'Sadio', 'Mane', '5550001111', '1992-04-10', 10, 'Pacey and skillful forward', 'Senegal', 15),
+(158, 'Hirving', 'Lozano', '5551112222', '1995-07-30', 22, 'Explosive and direct winger', 'Mexico', 15),
+(159, 'Giovanni', 'Reyna', '5552223333', '2002-11-13', 32, 'Talented and creative midfielder', 'United States', 15),
+(160, 'Andrew', 'Robertson', '5553334444', '1994-03-11', 26, 'Energetic and attacking full-back', 'Scotland', 15),
+(161, 'Gareth', 'Bale', '5554445555', '1989-07-16', 11, 'Technically gifted and powerful forward', 'Wales', 15),
+(162, 'Serge', 'Gnabry', '5555556666', '1995-07-14', 7, 'Explosive and clinical winger', 'Germany', 15),
+(163, 'Alejandro', 'Gomez', '5556667777', '1988-02-15', 10, 'Creative and agile playmaker', 'Argentina', 15),
+(164, 'Nicolo', 'Barella', '5557778888', '1997-02-27', 23, 'Energetic and tenacious midfielder', 'Italy', 15),
+(165, 'Rodrigo', 'Bentancur', '5558889999', '1997-06-25', 30, 'Talented and composed midfielder', 'Uruguay', 15),
+(166, 'Jose', 'Gaya', '5559990000', '1995-05-25', 14, 'Attacking and reliable full-back', 'Spain', 16),
+(167, 'Ederson', 'Moraes', '5550001111', '1993-08-17', 31, 'Modern and ball-playing goalkeeper', 'Brazil', 16),
+(168, 'Leon', 'Goretzka', '5551112222', '1995-02-06', 18, 'Powerful and box-to-box midfielder', 'Germany', 16),
+(169, 'Yannick', 'Carrasco', '5552223333', '1993-09-04', 21, 'Pacey and direct winger', 'Belgium', 16),
+(170, 'Ciro', 'Immobile', '5553334444', '1990-02-20', 17, 'Clinical and predatory striker', 'Italy', 16),
+(171, 'Marco', 'Verratti', '5554445555', '1992-11-05', 6, 'Technically gifted and tenacious midfielder', 'Italy',16),
+(172, 'Jorginho', 'Frello', '5555556666', '1991-12-20', 8, 'Intelligent and metronomic midfielder', 'Italy', 16),
+(173, 'Eduardo', 'Camavinga', '5556667777', '2002-11-10', 17, 'Young and talented midfielder', 'France', 16),
+(174, 'Alessandro', 'Florenzi', '5557778888', '1991-03-11', 16, 'Energetic and attacking full-back', 'Italy', 16),
+(175, 'Ferland', 'Mendy', '5558889999', '1995-06-08', 22, 'Strong and athletic full-back', 'France', 16),
+(176, 'Pedri', 'Gonzalez', '5559990000', '2002-11-25', 16, 'Talented and composed midfielder', 'Spain', 16),
+(177, 'Wilfred', 'Ndidi', '5550001111', '1996-12-16', 25, 'Strong and combative midfielder', 'Nigeria', 17),
+(178, 'Dani', 'Parejo', '5551112222', '1989-04-16', 10, 'Technical and intelligent playmaker', 'Spain', 17),
+(179, 'Lucas', 'Digne', '5552223333', '1993-07-20', 12, 'Attacking and defensively solid full-back', 'France', 17),
+(180, 'Ben', 'Chilwell', '5553334444', '1996-12-21', 3, 'Energetic and modern full-back', 'England', 17),
+(181, 'Kai', 'Havertz', '5555556666', '1999-06-11', 29, 'Versatile and technically gifted midfielder', 'Germany', 17),
+(182, 'Raphael', 'Varane', '5556667777', '1993-04-25', 5, 'Strong and composed center-back', 'France', 17),
+(183, 'Marquinhos', 'da Silva', '5557778888', '1994-05-14', 5, 'Solid and versatile defender', 'Brazil', 17),
+(184, 'Erling', 'Haaland', '5558889999', '2000-07-21', 9, 'Powerful and clinical striker', 'Norway', 17),
+(185, 'Lucas', 'Torreira', '5559990000', '1996-02-11', 18, 'Tenacious and hardworking midfielder', 'Uruguay', 17),
+(186, 'Adama', 'Traore', '5550001111', '1996-01-25', 37, 'Explosive and lightning-fast winger', 'Spain', 17),
+(187, 'Nico', 'Elvedi', '5551112222', '1996-09-30', 30, 'Solid and reliable center-back', 'Switzerland', 17),
+(188, 'Piotr', 'Zielinski', '5552223333', '1994-05-20', 20, 'Creative and technically gifted midfielder', 'Poland', 18),
+(189, 'Martin', 'Odegaard', '5553334444', '1998-12-17', 11, 'Talented and skillful attacking midfielder', 'Norway', 18),
+(190, 'Timo', 'Werner', '5554445555', '1996-03-06', 11, 'Pacey and clinical forward', 'Germany', 18),
+(191, 'Federico', 'Valverde', '5555556666', '1998-07-22', 16, 'Dynamic and box-to-box midfielder', 'Uruguay', 18),
+(192, 'Renato', 'Sanches', '5556667777', '1997-08-18', 18, 'Strong and powerful midfielder', 'Portugal', 18),
+(193, 'Wesley', 'Fofana', '5557778888', '2000-12-17', 3, 'Talented and composed center-back', 'France', 18),
+(194, 'Matthijs', 'de Ligt', '5558889999', '1999-08-12', 4, 'Strong and commanding center-back', 'Netherlands', 18),
+(195, 'Lautaro', 'Martinez', '5559990000', '1997-08-22', 10, 'Agile and clinical striker', 'Argentina', 18),
+(196, 'Lorenzo', 'Pellegrini', '5550001111', '1996-06-19', 7, 'Creative and intelligent playmaker', 'Italy', 18),
+(197, 'Houssem', 'Aouar', '5551112222', '1998-06-30', 8, 'Technically gifted and creative midfielder', 'France',18),
+(198, 'Jonathan', 'David', '5552223333', '2000-01-14', 9, 'Talented and goal-scoring striker', 'Canada', 18),
+(199, 'Yusuf', 'Yazici', '5553334444', '1997-01-29', 19, 'Skilled and versatile attacking midfielder', 'Turkey', 19),
+(200, 'Ferran', 'Torres', '5554445555', '2000-02-29', 21, 'Fast and technically gifted winger', 'Spain', 19),
+(201, 'Nuno', 'Mendes', '5555556666', '2002-06-19', 33, 'Young and promising left-back', 'Portugal', 19),
+(202, 'Sergej', 'Milinkovic-Savic', '5556667777', '1995-02-27', 21, 'Powerful and dominant midfielder', 'Serbia', 19),
+(203, 'Rodrygo', 'Goes', '5557778888', '2001-01-09', 27, 'Talented and skillful winger', 'Brazil', 19),
+(204, 'Dani', 'Olmo', '5558889999', '1998-05-07', 22, 'Creative and versatile attacking midfielder', 'Spain', 19),
+(205, 'Jonathan', 'Tah', '5559990000', '1996-02-11', 4, 'Strong and commanding center-back', 'Germany', 19),
+(206, 'Mikel', 'Merino', '5550001111', '1996-06-22', 8, 'Elegant and intelligent midfielder', 'Spain', 19),
+(207, 'Andrea', 'Belotti', '5551112222', '1993-12-20', 9, 'Strong and clinical striker', 'Italy', 19),
+(208, 'Christopher', 'Nkunku', '5552223333', '1997-11-14', 18, 'Creative and versatile attacking midfielder', 'France', 19),
+(209, 'Nicolo', 'Barella', '5553334444', '1997-02-27', 23, 'Energetic and box-to-box midfielder', 'Italy', 19),
+(210, 'Luka', 'Jovic', '5554445555', '1997-12-23', 9, 'Natural goalscorer and clinical finisher', 'Serbia', 20),
+(211, 'Dominik', 'Szoboszlai', '5555556666', '2000-10-25', 18, 'Talented and versatile midfielder', 'Hungary', 20),
+(212, 'Jonathan', 'Ikone', '5556667777', '1998-05-02', 10, 'Agile and skillful winger', 'France', 20),
+(213, 'Ozan', 'Kabak', '5557778888', '2000-03-25', 6, 'Solid and composed center-back', 'Turkey', 20),
+(214, 'Rafael', 'Leao', '5558889999', '1999-06-10', 17, 'Fast and skillful forward', 'Portugal', 20),
+(215, 'Emerson', 'Palmieri', '5559990000', '1994-08-13', 33, 'Attacking-minded and energetic left-back', 'Italy', 20),
+(216, 'Joao', 'Felix', '5550001111', '1999-11-10', 7, 'Highly talented and creative attacking midfielder', 'Portugal', 20),
+(217, 'Alessandro', 'Bastoni', '5551112222', '1999-04-13', 95, 'Talented and composed center-back', 'Italy', 20),
+(218, 'Pablo', 'Sarabia', '5552223333', '1992-05-11', 21, 'Versatile and intelligent attacking midfielder', 'Spain', 20),
+(219, 'Gianluigi', 'Donnarumma', '5553334444', '1999-02-25', 1, 'Talented and agile goalkeeper', 'Italy', 20),
+(220, 'Ricardo', 'Pereira', '5554445555', '1993-10-06', 21, 'Strong and energetic right-back', 'Portugal', 20);
+
+
+
+
+CREATE TABLE Managers (
+  manager_id INT PRIMARY KEY,
+  name VARCHAR(50) NOT NULL,
+  birthdate DATE NOT NULL,
+  phone_number VARCHAR(20) NOT NULL,
+  team_id INT
+);
+
+INSERT INTO Managers (manager_id, name, birthdate, phone_number, team_id) VALUES
+(1, 'Pep Guardiola', '1971-01-18', '555-123456', 1),
+(2, 'Jurgen Klopp', '1967-06-16', '555-987654', 2),
+(3, 'Zinedine Zidane', '1972-06-23', '555-456789', 3),
+(4, 'Diego Simeone', '1970-04-28', '555-789123', 4),
+(5, 'Jose Mourinho', '1963-01-26', '555-321987', 5),
+(6, 'Carlo Ancelotti', '1959-06-10', '555-654321', 6),
+(7, 'Mauricio Pochettino', '1972-03-02', '555-987123', 7),
+(8, 'Ole Gunnar Solskjaer', '1973-02-26', '555-789456', 8),
+(9, 'Julian Nagelsmann', '1987-07-23', '555-321654', 9),
+(10, 'Thomas Tuchel', '1973-08-29', '555-654789', 10),
+(11, 'Erik ten Hag', '1970-02-02', '555-987321', 11),
+(12, 'Massimiliano Allegri', '1967-08-11', '555-789654', 12),
+(13, 'Lucien Favre', '1957-11-02', '555-321789', 13),
+(14, 'Ralph Hasenhuttl', '1967-08-09', '555-654987', 14),
+(15, 'Brendan Rodgers', '1973-01-26', '555-987456', 15),
+(16, 'Marcelo Bielsa', '1955-07-21', '555-789321', 16),
+(17, 'Nuno Espirito Santo', '1974-01-25', '555-321456', 17),
+(18, 'Roberto Mancini', '1964-11-27', '555-654789', 18),
+(19, 'Gian Piero Gasperini', '1958-01-26', '555-987654', 19),
+(20, 'Unai Emery', '1971-11-03', '555-789987', 20);
+
+
+ALTER TABLE Teams
+ADD FOREIGN KEY (player_id) REFERENCES Players (player_id),
+ADD FOREIGN KEY (manager_id) REFERENCES Managers (manager_id);
+
+ALTER TABLE Players
+ADD FOREIGN KEY (team_id) REFERENCES Teams (team_id);
+
+
+CREATE TABLE Statistics (
+  stat_id INT PRIMARY KEY,
+  player_id INT,
+  goals INT,
+  assists INT,
+  red_cards INT,
+  yellow_cards INT,
+  clean_sheets INT
+);
+
+INSERT INTO Statistics (stat_id, player_id, goals, assists, red_cards, yellow_cards, clean_sheets) VALUES
+(1, 1, 30, 15, 0, 2, 10),
+(2, 2, 25, 10, 1, 3, 8),
+(3, 3, 18, 8, 0, 2, 12),
+(4, 4, 32, 5, 0, 1, 14),
+(5, 5, 10, 20, 0, 4, 0),
+(6, 6, 28, 15, 1, 5, 0),
+(7, 7, 2, 5, 0, 1, 18),
+(8, 8, 0, 0, 0, 0, 25),
+(9, 9, 20, 10, 1, 3, 0),
+(10, 10, 22, 8, 0, 2, 0),
+(11, 11, 15, 5, 0, 1, 0),
+(12, 12, 25, 12, 0, 3, 0),
+(13, 13, 10, 5, 0, 1, 0),
+(14, 14, 8, 18, 0, 4, 0),
+(15, 15, 12, 10, 1, 2, 0),
+(16, 16, 5, 8, 0, 1, 0),
+(17, 17, 18, 10, 0, 3, 0),
+(18, 18, 7, 12, 0, 2, 0),
+(19, 19, 30, 8, 1, 4, 0),
+(20, 20, 5, 5, 0, 1, 0),
+(21, 21, 8, 12, 0, 2, 0),
+(22, 22, 22, 10, 0, 3, 0),
+(23, 23, 10, 5, 1, 1, 0),
+(24, 24, 2, 8, 0, 2, 0),
+(25, 25, 5, 15, 0, 4, 0),
+(26, 26, 0, 0, 0, 0, 0),
+(27, 27, 1, 2, 0, 1, 0),
+(28, 28, 10, 8, 0, 2, 0),
+(29, 29, 5, 10, 0, 3, 0),
+(30, 30, 2, 5, 0, 1, 0);
+
+
+ALTER TABLE Statistics
+ADD FOREIGN KEY (player_id) REFERENCES Players (player_id);
+
+ALTER TABLE Managers
+ADD FOREIGN KEY (team_id) REFERENCES Teams (team_id);
+
+CREATE TABLE Matches (
+  match_id INT PRIMARY KEY,
+  date DATE,
+  home_team_id INT,
+  away_team_id INT,
+  home_goals INT,
+  away_goals INT,
+  stadium_id INT
+);
+
+CREATE TABLE Coaches (
+  coach_id INT PRIMARY KEY,
+  name VARCHAR(50) NOT NULL,
+  birthdate DATE NOT NULL,
+  position VARCHAR(50),
+  team_id INT
+  );
+
+INSERT INTO Coaches (coach_id, name, birthdate, position, team_id) VALUES
+(1, 'Roberto Carlos', '1972-06-23', 'Head Coach', 2),
+(2, 'Diego Simeone', '1970-04-28', 'Defensive Coach', 3),
+(3, 'Pep Guardiola', '1971-01-18', 'Head Coach', 1),
+(4, 'Jurgen Klopp', '1967-06-16', 'Offensive Coach', 2),
+(5, 'Zinedine Zidane', '1972-06-23', 'Head Coach', 3),
+(6, 'Carlo Ancelotti', '1959-06-10', 'Assistant Coach', 4),
+(7, 'Mauricio Pochettino', '1972-03-02', 'Head Coach', 5),
+(8, 'Ole Gunnar Solskjaer', '1973-02-26', 'Defensive Coach', 6),
+(9, 'Julian Nagelsmann', '1987-07-23', 'Head Coach', 7),
+(10, 'Thomas Tuchel', '1973-08-29', 'Offensive Coach', 8),
+(11, 'Erik ten Hag', '1970-02-02', 'Head Coach', 9),
+(12, 'Massimiliano Allegri', '1967-08-11', 'Defensive Coach', 10),
+(13, 'Lucien Favre', '1957-11-02', 'Head Coach', 11),
+(14, 'Ralph Hasenhuttl', '1967-08-09', 'Offensive Coach', 12),
+(15, 'Brendan Rodgers', '1973-01-26', 'Head Coach', 13),
+(16, 'Marcelo Bielsa', '1955-07-21', 'Defensive Coach', 14),
+(17, 'Nuno Espirito Santo', '1974-01-25', 'Head Coach', 15),
+(18, 'Roberto Mancini', '1964-11-27', 'Offensive Coach', 16),
+(19, 'Gian Piero Gasperini', '1958-01-26', 'Head Coach', 17),
+(20, 'Unai Emery', '1971-11-03', 'Defensive Coach', 18),
+(21, 'Andrea Pirlo', '1979-05-19', 'Head Coach', 19),
+(22, 'Ronald Koeman', '1963-03-21', 'Offensive Coach', 20),
+(23, 'Steven Gerrard', '1980-05-30', 'Head Coach', 1),
+(24, 'Mikel Arteta', '1982-03-26', 'Defensive Coach', 2),
+(25, 'Zinedine Zidane', '1972-06-23', 'Head Coach', 3),
+(26, 'Diego Simeone', '1970-04-28', 'Offensive Coach', 4),
+(27, 'Jose Weasly', '1963-01-26', 'Head Coach', 5),
+(28, 'ronald Ancelotti', '1959-06-10', 'Defensive Coach', 6),
+(29, 'Pep Guardiola', '1971-01-18', 'Head Coach', 7),
+(30, 'Amir Klopp', '1967-06-16', 'Offensive Coach', 8);
+
+
+ALTER TABLE Coaches
+ADD FOREIGN KEY (team_id) REFERENCES Teams (team_id);
+
+
+INSERT INTO Matches (match_id, date, home_team_id, away_team_id, home_goals, away_goals, stadium_id) VALUES
+(1, '2023-01-01', 1, 2, 2, 1, 1),
+(2, '2023-01-02', 3, 4, 0, 0, 2),
+(3, '2023-01-03', 5, 6, 3, 2, 3),
+(4, '2023-01-04', 7, 8, 1, 1, 4),
+(5, '2023-01-05', 9, 10, 2, 0, 5),
+(6, '2023-01-06', 11, 12, 0, 2, 6),
+(7, '2023-01-07', 13, 14, 1, 0, 7),
+(8, '2023-01-08', 15, 16, 2, 2, 8),
+(9, '2023-01-09', 17, 18, 3, 1, 9),
+(10, '2023-01-10', 19, 20, 0, 0, 10),
+(11, '2023-01-11', 1, 3, 2, 1, 11),
+(12, '2023-01-12', 2, 4, 0, 3, 12),
+(13, '2023-01-13', 3, 5, 1, 1, 13),
+(14, '2023-01-14', 4, 6, 2, 0, 14),
+(15, '2023-01-15', 5, 7, 0, 1, 15),
+(16, '2023-01-16', 6, 8, 1, 2, 16),
+(17, '2023-01-17', 7, 9, 2, 0, 17),
+(18, '2023-01-18', 8, 10, 0, 1, 18),
+(19, '2023-01-19', 9, 11, 1, 3, 19),
+(20, '2023-01-20', 10, 12, 2, 2, 20),
+(21, '2023-01-21', 11, 13, 1, 0, 21),
+(22, '2023-01-22', 12, 14, 0, 0, 22),
+(23, '2023-01-23', 13, 15, 3, 1, 23),
+(24, '2023-01-24', 14, 16, 0, 2, 24),
+(25, '2023-01-25', 15, 17, 1, 0, 25),
+(26, '2023-01-26', 16, 18, 2, 2, 26),
+(27, '2023-01-27', 17, 19, 0, 1, 27),
+(28, '2023-01-28', 18, 20, 3, 0, 28),
+(29, '2023-01-29', 19, 1, 1, 1, 29),
+(30, '2023-01-30', 20, 2, 2, 0, 30);
+
+CREATE TABLE Stadiums (
+  stadium_id INT PRIMARY KEY,
+  name VARCHAR(50) NOT NULL,
+  location VARCHAR(100) NOT NULL,
+  capacity INT
+);
+
+INSERT INTO Stadiums (stadium_id, name, location, capacity) VALUES
+(1, 'Old Trafford', 'Manchester', 75000),
+(2, 'Santiago Bernabeu', 'Madrid', 81044),
+(3, 'Camp Nou', 'Barcelona', 99354),
+(4, 'Allianz Arena', 'Munich', 75000),
+(5, 'Anfield', 'Liverpool', 53394),
+(6, 'San Siro', 'Milan', 80018),
+(7, 'Emirates Stadium', 'London', 60260),
+(8, 'Stamford Bridge', 'London', 40834),
+(9, 'Signal Iduna Park', 'Dortmund', 81365),
+(10, 'Parc des Princes', 'Paris', 47929),
+(11, 'Estadio da Luz', 'Lisbon', 64034),
+(12, 'Wembley Stadium', 'London', 90000),
+(13, 'Giuseppe Meazza', 'Milan', 80018),
+(14, 'Veltins-Arena', 'Gelsenkirchen', 62271),
+(15, 'Etihad Stadium', 'Manchester', 55017),
+(16, 'Mestalla Stadium', 'Valencia', 55000),
+(17, 'Stadio Olimpico', 'Rome', 70000),
+(18, 'Mercedes-Benz Arena', 'Stuttgart', 60441),
+(19, 'King Power Stadium', 'Leicester', 32312),
+(20, 'Tottenham Hotspur Stadium', 'London', 62862),
+(21, 'Estadio do Dragao', 'Porto', 50898),
+(22, 'Johan Cruyff Arena', 'Amsterdam', 54990),
+(23, 'Olympiastadion Berlin', 'Berlin', 74746),
+(24, 'Estadio Metropolitano', 'Madrid', 68760),
+(25, 'Estadio do Maracana', 'Rio de Janeiro', 78838),
+(26, 'Celtic Park', 'Glasgow', 60832),
+(27, 'Ibrox Stadium', 'Glasgow', 50500),
+(28, 'Estadio Monumental', 'Buenos Aires', 69952),
+(29, 'Stadio San Paolo', 'Naples', 60240),
+(30, 'Estadio Azteca', 'Mexico City', 87207);
+
+
+ALTER TABLE Matches
+ADD FOREIGN KEY (home_team_id) REFERENCES Teams (team_id),
+ADD  FOREIGN KEY (away_team_id) REFERENCES Teams (team_id),
+ADD FOREIGN KEY (stadium_id) REFERENCES Stadiums (stadium_id);
+
+CREATE TABLE Goals (
+  goal_id INT PRIMARY KEY,
+  match_id INT,
+  player_id INT,
+  team_id INT,
+  goal_number INT
+);
+
+INSERT INTO Goals (goal_id, match_id, player_id, team_id, goal_number) VALUES
+(1, 1, 1, 1, 1),
+(2, 1, 2, 2, 1),
+(3, 2, 3, 3, 1),
+(4, 2, 4, 4, 1),
+(5, 3, 5, 5, 1),
+(6, 3, 6, 6, 1),
+(7, 4, 7, 7, 1),
+(8, 4, 8, 8, 1),
+(9, 5, 9, 9, 1),
+(10, 5, 10, 10, 1),
+(11, 6, 11, 11, 1),
+(12, 6, 12, 12, 1),
+(13, 7, 13, 13, 1),
+(14, 7, 14, 14, 1),
+(15, 8, 15, 15, 1),
+(16, 8, 16, 16, 1),
+(17, 9, 17, 17, 1),
+(18, 9, 18, 18, 1),
+(19, 10, 19, 19, 1),
+(20, 10, 20, 20, 1),
+(21, 11, 1, 1, 2),
+(22, 11, 2, 2, 2),
+(23, 12, 3, 3, 2),
+(24, 12, 4, 4, 2),
+(25, 13, 5, 5, 2),
+(26, 13, 6, 6, 2),
+(27, 14, 7, 7, 2),
+(28, 14, 8, 8, 2),
+(29, 15, 9, 9, 2),
+(30, 15, 10, 10, 2);
+
+
+ALTER TABLE Goals
+ADD FOREIGN KEY (match_id) REFERENCES Matches (match_id),
+ADD  FOREIGN KEY (player_id) REFERENCES Players (player_id),
+ADD FOREIGN KEY (team_id) REFERENCES Teams (team_id);
+
+
+CREATE TABLE Contracts (
+  contract_id INT PRIMARY KEY,
+  start_date DATE,
+  end_date DATE,
+  salary DECIMAL(10, 2),
+  employer_id INT
+);
+
+
+INSERT INTO Contracts (contract_id, start_date, end_date, salary, employer_id) VALUES
+(1, '2022-01-01', '2024-01-01', 1000000.00, 1),
+(2, '2023-02-01', '2025-02-01', 800000.00, 2),
+(3, '2022-03-01', '2024-03-01', 900000.00, 3),
+(4, '2023-04-01', '2025-04-01', 750000.00, 4),
+(5, '2022-05-01', '2024-05-01', 850000.00, 5),
+(6, '2023-06-01', '2025-06-01', 700000.00, 6),
+(7, '2022-07-01', '2024-07-01', 950000.00, 7),
+(8, '2023-08-01', '2025-08-01', 850000.00, 8),
+(9, '2022-09-01', '2024-09-01', 750000.00, 9),
+(10, '2023-10-01', '2025-10-01', 900000.00, 10),
+(11, '2022-11-01', '2024-11-01', 800000.00, 11),
+(12, '2023-12-01', '2025-12-01', 700000.00, 12),
+(13, '2022-01-01', '2024-01-01', 950000.00, 13),
+(14, '2023-02-01', '2025-02-01', 850000.00, 14),
+(15, '2022-03-01', '2024-03-01', 750000.00, 15),
+(16, '2023-04-01', '2025-04-01', 900000.00, 16),
+(17, '2022-05-01', '2024-05-01', 800000.00, 17),
+(18, '2023-06-01', '2025-06-01', 700000.00, 18),
+(19, '2022-07-01', '2024-07-01', 950000.00, 19),
+(20, '2023-08-01', '2025-08-01', 850000.00, 20);
+
+
+ALTER TABLE Contracts
+ADD FOREIGN KEY (employer_id) REFERENCES Teams (team_id);
+
+
+CREATE TABLE MatchConditions (
+  match_c_id INT PRIMARY KEY,
+  temperature DECIMAL(5, 2),
+  humidity DECIMAL(5, 2),
+  precipitation_percentage DECIMAL(5, 2),
+  rainfall_chance DECIMAL(5, 2),
+  match_id INT
+);
+
+
+
+INSERT INTO MatchConditions (match_c_id, temperature, humidity, precipitation_percentage, rainfall_chance,match_id) VALUES
+(3, 18.9, 65.4, 12.1, 0.35,1),
+(4, 22.3, 58.6, 7.6, 0.08,2),
+(5, 19.8, 67.1, 9.5, 0.21,3),
+(6, 23.6, 63.9, 6.2, 0.11,4),
+(7, 17.4, 71.8, 11.7, 0.29,5),
+(8, 20.9, 56.3, 8.4, 0.06,6),
+(9, 16.7, 68.5, 10.9, 0.32,7),
+(10, 24.1, 61.2, 5.4, 0.13,8),
+(11, 21.6, 69.7, 9.8, 0.24,9),
+(12, 18.2, 53.9, 7.1, 0.09,10),
+(13, 25.8, 72.3, 11.5, 0.27,11),
+(14, 19.5, 57.8, 8.9, 0.07,12),
+(15, 23.3, 66.5, 10.6, 0.31,13),
+(16, 17.1, 62.4, 6.8, 0.12,14),
+(17, 20.6, 70.9, 9.2, 0.23,15),
+(18, 22.9, 54.7, 7.9, 0.05,16),
+(19, 16.4, 63.2, 11.3, 0.28,17),
+(20, 24.4, 58.1, 5.6, 0.14,18),
+(21, 21.1, 66.9, 9.6, 0.25,19),
+(22, 18.7, 52.8, 7.3, 0.1,20);
+
+
+ALTER TABLE MatchConditions
+ADD FOREIGN KEY (match_id) REFERENCES Matches(match_id);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
